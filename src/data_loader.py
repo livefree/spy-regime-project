@@ -7,9 +7,17 @@ from datetime import date
 from pathlib import Path
 
 
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+
 def parse_yyyy_m_d(value: str) -> date:
     y, m, d = value.split("-")
     return date(int(y), int(m), int(d))
+
+
+def resolve_path(path_str: str) -> Path:
+    path = Path(path_str)
+    return path if path.is_absolute() else PROJECT_ROOT / path
 
 
 def build_dataset(
@@ -18,11 +26,14 @@ def build_dataset(
     start_date: str = "2008-01-01",
     end_date: str = "2024-12-31",
 ) -> list[dict[str, str]]:
+    in_path = resolve_path(input_path)
+    out_path = resolve_path(output_path)
+
     start = parse_yyyy_m_d(start_date)
     end = parse_yyyy_m_d(end_date)
 
     rows: list[tuple[date, float]] = []
-    with open(input_path, "r", newline="") as f:
+    with open(in_path, "r", newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
             d = parse_yyyy_m_d(row["Date"])
@@ -41,9 +52,8 @@ def build_dataset(
             )
         prev_close = close
 
-    output = Path(output_path)
-    output.parent.mkdir(parents=True, exist_ok=True)
-    with open(output, "w", newline="") as f:
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(out_path, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=["date", "close", "return"])
         writer.writeheader()
         writer.writerows(result)
