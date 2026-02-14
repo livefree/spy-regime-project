@@ -1,11 +1,11 @@
 很好。  
-我们做一次真正的 Research Engineer Workflow 体验版 2-Day Scaffold。  
+我们做一次真正的 Research Engineer Workflow 体验版 2-Day Scaffold。
 
 目标不是做出一个“成功模型”。  
 目标是：
 
 > 体验一次完整的 mini ML lifecycle  
-> 并暴露真实难点  
+> 并暴露真实难点
 
 ---
 
@@ -33,12 +33,12 @@ volatility-regime-mini\
 ├── models\
 ├── experiments\
 ├── src\
-│   ├── data_loader.py\
-│   ├── features.py\
-│   ├── baseline.py\
-│   ├── autoencoder.py\
-│   ├── clustering.py\
-│   └── evaluation.py\
+│ ├── data_loader.py\
+│ ├── features.py\
+│ ├── baseline.py\
+│ ├── autoencoder.py\
+│ ├── clustering.py\
+│ └── evaluation.py\
 │\
 └── README.md
 
@@ -64,7 +64,7 @@ volatility-regime-mini\
 数据来源：
 
 - yfinance
-- 下载 SPY 或 ^GSPC
+- 读取数据 spy.csv
 - 时间范围：2008–2024
 
 任务：
@@ -240,11 +240,11 @@ input_dim → 8 → 2 → 8 → input_dim
 建立一个简单 json 记录：
 
 {
-    "model": "autoencoder",
-    "latent_dim": 2,
-    "k": 3,
-    "train_period": "2008-2018",
-    "mse": ...
+"model": "autoencoder",
+"latent_dim": 2,
+"k": 3,
+"train_period": "2008-2018",
+"mse": ...
 }
 
 放在 experiments/
@@ -275,7 +275,7 @@ input_dim → 8 → 2 → 8 → input_dim
 ✔ 数据→特征→baseline→模型→评估  
 ✔ 简单实验记录  
 ✔ 结构化代码  
-✔ 技术反思  
+✔ 技术反思
 
 ---
 
@@ -321,8 +321,8 @@ input_dim → 8 → 2 → 8 → input_dim
 
 等你 Day 1 完成，我们可以一起：
 
-- 复盘结构问题  
-- 评估能力 gap  
-- 决定是否 pivot 回 listing 项目  
+- 复盘结构问题
+- 评估能力 gap
+- 决定是否 pivot 回 listing 项目
 
 这才是你真正的战略训练。
